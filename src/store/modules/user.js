@@ -1,6 +1,7 @@
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
+import { data } from 'autoprefixer'
 
 const getDefaultState = () => {
   return {
@@ -20,6 +21,7 @@ const mutations = {
     state.token = token
   },
   SET_USERNAME: (state, username) => {
+    console.log(username, '=-==-=-')
     state.username = username
   },
   SET_AVATAR: (state, avatar) => {
@@ -32,7 +34,7 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: password }).then(response => {
+      login({ userName: username.trim(), password: password }).then(response => {
         const { data } = response
         commit('SET_TOKEN', data.token)
         setToken(data.token)
@@ -47,20 +49,15 @@ const actions = {
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo().then(response => {
-        const { data } = response
-        console.log(data)
-
-        if (!data) {
+        const { data: { user }} = response
+        if (!user) {
           reject('Verification failed, please Login again.')
         }
-
-        const { username } = data
-
-        commit('SET_USERNAME', username)
-        // commit('SET_AVATAR', avatar)
-        resolve(data)
+        const { userName } = user
+        commit('SET_USERNAME', userName)
+        resolve(user)
       }).catch(error => {
-        reject(error)
+        reject(user)
       })
     })
   },
@@ -68,14 +65,10 @@ const actions = {
   // user logout
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
-        removeToken() // must remove  token  first
-        resetRouter()
-        commit('RESET_STATE')
-        resolve()
-      }).catch(error => {
-        reject(error)
-      })
+      removeToken() // must remove  token  first
+      resetRouter()
+      commit('RESET_STATE')
+      resolve()
     })
   },
 

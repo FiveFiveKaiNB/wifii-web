@@ -60,3 +60,6 @@ export default {
   display: inline-block;
 }
 </style>
+<style>
+path { fill: inherit !important }
+</style>

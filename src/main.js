@@ -11,6 +11,7 @@ import '@/styles/index.scss' // global css
 import App from './App'
 import store from './store'
 import router from './router'
+import VueJsonp from 'vue-jsonp'
 
 import '@/icons' // icon
 
@@ -29,6 +30,7 @@ if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
 
+Vue.use(VueJsonp)
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明

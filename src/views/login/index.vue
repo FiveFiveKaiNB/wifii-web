@@ -1,12 +1,12 @@
 <template>
   <div class="login-container">
-    <img class="ltImg" src="../../assets/left-top.png" alt="">
-    <img class="rbImg" src="../../assets/right-bottom.png" alt="">
+    <img class="ltImg" src="https://qn-qghotel.lindingtechnology.com/pcenter_1608790863793" alt="">
+    <img class="rbImg" src="https://qn-qghotel.lindingtechnology.com/pcenter_1608790857068" alt="">
     <div class="form-container">
       <div class="form-aside">
         <div class="aside-title">欢迎进入</div>
-        <div class="aside-title">电子书后台管理</div>
-        <img src="../../assets/login-img.png" class="loginImg" alt="">
+        <div class="aside-title">WIFI-管理管理后台</div>
+        <img src="https://qn-qghotel.lindingtechnology.com/pcenter_1608790867913" class="loginImg" alt="">
       </div>
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
@@ -77,8 +77,8 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: '111111'
+        // username: 'admin',
+        // password: '111111'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -96,6 +96,8 @@ export default {
       },
       immediate: true
     }
+  },
+  created() {
   },
   methods: {
     showPwd() {
@@ -131,7 +133,7 @@ export default {
 <style lang="scss" scoped>
 $bg:#2d3a4b;
 $dark_green:#003E26;
-$light_green:#03C17B;
+$light_green:#F05454;
 
 .login-container {
   min-height: 100%;
@@ -139,11 +141,15 @@ $light_green:#03C17B;
   position: relative;
   .ltImg{
     position: absolute;
+    width: 853px;
+    height: 338px;
     left: 0;
     top: 0;
   }
   .rbImg{
     position: absolute;
+    width: 769px;
+    height: 453px;
     right: 0;
     bottom: 0;
   }
@@ -151,7 +157,8 @@ $light_green:#03C17B;
     position: absolute;
     width:1067px;
     height:609px;
-    box-shadow:0px 2px 5px 0px rgba(39,181,186,0.11),0px 3px 13px 4px rgba(22,119,122,0.11);
+    // box-shadow:0px 2px 5px 0px rgba(39,181,186,0.11),0px 3px 13px 4px rgba(22,119,122,0.11);
+    box-shadow: 0px 6px 12px 2px rgba(0, 0, 0, 0.06);
     border-radius:23px;
     left: 50%;
     top: 50%;
@@ -163,7 +170,8 @@ $light_green:#03C17B;
       height: 100%;
       padding: 30px;
       float: left;
-      box-shadow:2px 0px 5px 0px rgba(39,181,186,0.11),3px 0px 13px 4px rgba(22,119,122,0.11);
+      // box-shadow:2px 0px 5px 0px rgba(39,181,186,0.11),3px 0px 13px 4px rgba(22,119,122,0.11);
+      box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.06);
       border-radius:23px;
       .aside-title{
         color: $dark_green;
@@ -174,6 +182,8 @@ $light_green:#03C17B;
       .loginImg{
         position: absolute;
         display: block;
+        width: 496px;
+        height: 400px;
         left: 0;
         bottom: 0;
       }
@@ -232,11 +242,17 @@ $light_green:#03C17B;
       .btn-wrapper{
         width: 350px;
         margin: 157px auto;
-        box-shadow:0px 4px 8px 0px rgba(77,90,175,0.3),0px 1px 2px 0px rgba(77,90,175,0.14);
+        box-shadow: 0px 5px 10px 2px rgba(204, 0, 0, 0.3);
         border-radius:4px;
         .el-button{
           background: $light_green;
         }
+         .el-button--primary:hover {
+            border: 2px solid $light_green;
+         }
+         .el-button--primary {
+            border: 2px solid $light_green;
+         }
       }
     }
 
